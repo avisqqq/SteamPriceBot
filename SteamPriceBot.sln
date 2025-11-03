@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamPriceBot.Domain", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamPriceBot.Application", "src\SteamPriceBot.Application\SteamPriceBot.Application.csproj", "{0E504124-B41A-4CDE-B35D-0A2C61A167A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exceptions", "Exceptions", "{A1DAD8C1-E8D2-A774-2ECE-A7CBF5166439}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
