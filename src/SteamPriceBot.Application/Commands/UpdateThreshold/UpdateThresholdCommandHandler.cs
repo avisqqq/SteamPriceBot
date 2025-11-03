@@ -20,7 +20,7 @@ namespace SteamPriceBot.Application.Commands.UpdateThreshold
         public async Task HandleAsync(UpdateThresholdCommand command, CancellationToken ct = default)
         {
             var item = await _repo.GetByIdAsync(command.TrackItemId, ct)
-                ?? throw new Exception($"Tracked item {command.TrackItemId} not found");
+                ?? throw new ApplicationException($"Tracked item {command.TrackItemId} not found");
 
             item.UpdateThreshold(AlertThreshold.Create(command.NewThreshold));
 

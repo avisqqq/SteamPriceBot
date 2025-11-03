@@ -3,4 +3,4 @@ using SteamPriceBot.Application.DTOs;
 
 namespace SteamPriceBot.Application.Queries.GetItemHistory;
 
-public record GetItemHistoryQuery(Guid TrackedItem) : IQuery<IEnumerable<HistoryRecordDto>>;
+public record GetItemHistoryQuery(Guid TrackedItemId) : IQuery<IEnumerable<HistoryRecordDto>>;
