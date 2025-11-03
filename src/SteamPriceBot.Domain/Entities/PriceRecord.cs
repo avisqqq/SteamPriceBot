@@ -12,7 +12,7 @@ namespace SteamPriceBot.Domain.Entities
         public Guid TrackedItemId { get; private set; }
         public DateTime TimestampUtc { get; init; } = DateTime.UtcNow;
         public PriceValue Price { get; init; }
-        public PriceRecord(Guid trackedItemId,PriceValue price)
+        public PriceRecord(Guid trackedItemId, PriceValue price)
         {
             TrackedItemId = trackedItemId;
             Price = price;
