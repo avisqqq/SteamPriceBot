@@ -11,13 +11,13 @@ namespace SteamPriceBot.Domain.Entities
     {
         public Guid TrackedItemId { get; private set; }
         public DateTime TimestampUtc { get; init; } = DateTime.UtcNow;
-        public PriceValue Price { get; init; }
+        public PriceValue Price { get; private set; } = null!;
         public PriceRecord(Guid trackedItemId, PriceValue price)
         {
             TrackedItemId = trackedItemId;
             Price = price;
         }
         // EF COre private constructor(if EF core will not find trackedId It will throw exception)
-        private PriceRecord(){}
+        private PriceRecord() { }
     }
 }
