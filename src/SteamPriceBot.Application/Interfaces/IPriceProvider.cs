@@ -4,5 +4,5 @@ namespace SteamPriceBot.Application.Interfaces;
 
 public interface IPriceProvider
 {
-    Task<PriceValue?> GetCurrentPrice(string marketHashName, string currenyCode, CancellationToken cancellationToken = default);
+    Task<PriceValue?> GetCurrentPriceAsync(string marketHashName, string currencyCode, CancellationToken cancellationToken = default);
 }

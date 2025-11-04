@@ -23,7 +23,7 @@ namespace SteamPriceBot.Application.Commands.TrackItem
 
         public async Task HandleAsync(TrackItemCommand command, CancellationToken ct = default)
         {
-            var price = await _priceProvider.GetCurrentPrice(command.MarketHashName, command.CurrencyCode, ct)
+            var price = await _priceProvider.GetCurrentPriceAsync(command.MarketHashName, command.CurrencyCode, ct)
                 ?? throw new ApplicationException($"Price for {command.MarketHashName} not found");
             var itemId = new ItemId(730, command.MarketHashName);
             var marketItem = new MarketItem(itemId, command.MarketHashName);

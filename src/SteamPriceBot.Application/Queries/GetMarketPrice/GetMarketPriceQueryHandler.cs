@@ -14,7 +14,7 @@ public class GetMarketPriceQueryHandler : IQueryHandler<GetMarketPriceQuery, Pri
     }
     public async Task<PriceDto> HandleAsync(GetMarketPriceQuery query, CancellationToken ct = default)
     {
-        var price = await _provider.GetCurrentPrice(query.MarketHashName, query.CurrencyCode, ct)
+        var price = await _provider.GetCurrentPriceAsync(query.MarketHashName, query.CurrencyCode, ct)
              ?? throw new ApplicationException($"Could not fetch price for {query.MarketHashName}");
         return new PriceDto(query.MarketHashName, price.Amount, price.Currency.Code);
     }
