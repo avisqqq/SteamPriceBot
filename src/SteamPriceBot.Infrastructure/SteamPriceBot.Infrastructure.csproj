@@ -7,7 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\SteamPriceBot.Domain\SteamPriceBot.Domain.csproj" />
-    <ProjectReference Include="..\SteamPriceBot.Domain\SteamPriceBot.Application.csproj" />
+    <ProjectReference Include="..\SteamPriceBot.Application\SteamPriceBot.Application.csproj" />
 
   </ItemGroup>
   <ItemGroup>
