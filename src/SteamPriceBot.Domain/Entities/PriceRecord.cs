@@ -17,7 +17,7 @@ namespace SteamPriceBot.Domain.Entities
             TrackedItemId = trackedItemId;
             Price = price;
         }
-        // EF COre private constructor
+        // EF COre private constructor(if EF core will not find trackedId It will throw exception)
         private PriceRecord(){}
     }
 }
