@@ -7,5 +7,5 @@ public interface IItemRepository
     Task AddAsync(TrackedItem trackedItem, CancellationToken cancellationToken = default);
     Task<TrackedItem?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<IEnumerable<TrackedItem>> GetAllAsync(CancellationToken cancellationToken = default);
-    Task RemoveAsync(Guid id, CancellationToken cancellationToken = default);
+    Task RemoveByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

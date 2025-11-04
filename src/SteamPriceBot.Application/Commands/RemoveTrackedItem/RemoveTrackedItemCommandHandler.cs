@@ -19,7 +19,7 @@ namespace SteamPriceBot.Application.Commands.RemoveTrackedItem
         }
         public async Task HandleAsync(RemoveTrackedItemCommand command, CancellationToken ct = default)
         {
-            await _repo.RemoveAsync(command.TrackedItemId, ct);
+            await _repo.RemoveByIdAsync(command.TrackedItemId, ct);
             await _uow.CommitAsync(ct);
         }
     }

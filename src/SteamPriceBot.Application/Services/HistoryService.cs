@@ -13,9 +13,9 @@ public class HistoryService
         _history = history;
         _uow = uow;
     }
-    public async Task AddRecordAsync(Guid trackedItemId, PriceRecord record,CancellationToken ct = default)
+    public async Task AddRecordAsync(Guid trackedItemId, PriceRecord record, CancellationToken ct = default)
     {
-        await _history.AddRecordAsync(trackedItemId, record, ct);
+        await _history.AddRecordAsync(record, ct);
         await _uow.CommitAsync();
     }
 }
