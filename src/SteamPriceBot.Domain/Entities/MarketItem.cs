@@ -19,6 +19,7 @@ namespace SteamPriceBot.Domain.Entities
             ItemId = itemId;
             DisplayName = displayName;
         }
+
         public void AddPriceRecord(PriceRecord priceRecord)
         {
             _priceHistory.Add(priceRecord);

@@ -1,0 +1,11 @@
+{
+  "Telegram": {
+    "Token":"YOUR_TELEGRAM_BOT_TOKEN"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  }
+}

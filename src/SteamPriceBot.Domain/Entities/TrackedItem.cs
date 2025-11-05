@@ -17,6 +17,7 @@ namespace SteamPriceBot.Domain.Entities
             Item = item;
             Threshold = threshold;
         }
+
         public void UpdateThreshold(AlertThreshold threshold)
         {
             Threshold = threshold;

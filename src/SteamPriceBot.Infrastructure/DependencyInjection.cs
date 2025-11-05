@@ -29,22 +29,12 @@ public static class DependencyInjection
         var telegramToken = config["Telegram: Token"];
         var chatId = config["Telegram : ChatId"];
         if (!string.IsNullOrEmpty(telegramToken) && !string.IsNullOrEmpty(chatId))
-        {
             services.AddSingleton<INotificationService>(new TelegramNotificationService(telegramToken, chatId));
-        }
-        else
-        {
-            throw new Exception("Telegram token issue");
-        }
+
         var discordWebhook = config["Discord:WebhookUrl"];
         if (!string.IsNullOrEmpty(discordWebhook))
-        {
             services.AddSingleton<INotificationService>(new DiscordNotificationService(discordWebhook));
-        }
-        else
-        {
-            throw new Exception("Discord token issue");
-        }
+        
         return services;
         
     }
