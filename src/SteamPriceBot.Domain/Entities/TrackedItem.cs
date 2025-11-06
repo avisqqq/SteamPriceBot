@@ -10,7 +10,7 @@ namespace SteamPriceBot.Domain.Entities
 {
     public class TrackedItem : EntityBase
     {
-        public MarketItem Item { get; private set; }
+        public MarketItem? Item { get; private set; }
         public AlertThreshold? Threshold { get; private set; }
         public TrackedItem(MarketItem item, AlertThreshold? threshold = null)
         {
@@ -22,6 +22,9 @@ namespace SteamPriceBot.Domain.Entities
         {
             Threshold = threshold;
         }
+
+        
+        private TrackedItem(){} // EF Core
         public void EvaluatePrice(PriceValue current)
         {
             if (Threshold is null)

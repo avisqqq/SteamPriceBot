@@ -14,8 +14,15 @@ public class PriceRecordConfiguration : IEntityTypeConfiguration<PriceRecord>
 
         builder.OwnsOne(x => x.Price, b =>
         {
-            b.Property(i => i.Amount).HasColumnName("Amount");
-            b.Property(i => i.Currency).HasColumnName("CurrencyCode");
+            b.Property(i => i.Amount)
+                .HasColumnName("Amount")
+                .IsRequired();
+            b.OwnsOne(i => i.Currency, c =>
+            {
+                c.Property(code => code.Code)
+                    .HasColumnName("CurrencyCode")
+                    .IsRequired();
+            });
         });
         builder.Property(x => x.TrackedItemId).IsRequired();
     }

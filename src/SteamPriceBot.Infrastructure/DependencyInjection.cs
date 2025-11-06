@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using SteamPriceBot.Application.Interfaces;
 using SteamPriceBot.Infrastructure.Notifications;
 using SteamPriceBot.Infrastructure.Persistence;
+using SteamPriceBot.Infrastructure.Persistence.Repositories;
 using SteamPriceBot.Infrastructure.Providers;
 
 namespace SteamPriceBot.Infrastructure;
@@ -21,12 +22,14 @@ public static class DependencyInjection
         services.AddScoped<IItemRepository, ItemRepository>();
         services.AddScoped<IPriceHistoryRepository, PriceHistoryRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddHostedService<DatabaseMigrationHostedService>();
+        
 
         // Providers
         services.AddHttpClient<IPriceProvider, SteamPriceProviders>();
 
         // Notification
-        var telegramToken = config["Telegram: Token"];
+        var telegramToken = config["Telegram:Token"];
         var chatId = config["Telegram : ChatId"];
         if (!string.IsNullOrEmpty(telegramToken) && !string.IsNullOrEmpty(chatId))
             services.AddSingleton<INotificationService>(new TelegramNotificationService(telegramToken, chatId));

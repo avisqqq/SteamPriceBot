@@ -12,5 +12,5 @@ IHost host = Host.CreateDefaultBuilder(args)
         services.AddHostedService<TelegramWorkerService>();
     }
     ).Build();
-
+    
 await host.RunAsync();

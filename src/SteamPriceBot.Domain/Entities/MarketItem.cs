@@ -9,8 +9,8 @@ namespace SteamPriceBot.Domain.Entities
 {
     public class MarketItem : EntityBase
     {
-        public ItemId ItemId { get; private set; }
-        public string DisplayName { get; private set; }
+        public ItemId? ItemId { get; private set; }
+        public string? DisplayName { get; private set; }
 
         private readonly List<PriceRecord> _priceHistory = new();
         public IReadOnlyCollection<PriceRecord> PriceHistory => _priceHistory.AsReadOnly();
@@ -20,6 +20,7 @@ namespace SteamPriceBot.Domain.Entities
             DisplayName = displayName;
         }
 
+        private MarketItem(){} // EF Core
         public void AddPriceRecord(PriceRecord priceRecord)
         {
             _priceHistory.Add(priceRecord);

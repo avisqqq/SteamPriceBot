@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using SteamPriceBot.Application.Interfaces;
 using SteamPriceBot.Domain.Entities;
 
-namespace SteamPriceBot.Infrastructure.Persistence;
+namespace SteamPriceBot.Infrastructure.Persistence.Repositories;
 
 public class ItemRepository : IItemRepository
 {

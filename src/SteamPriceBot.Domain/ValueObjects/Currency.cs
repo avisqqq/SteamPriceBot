@@ -5,8 +5,13 @@ using System.Threading.Tasks;
 
 namespace SteamPriceBot.Domain.ValueObjects
 {
-    public sealed record Currency(string Code)
+    public sealed record Currency
     {
+        private Currency() { } //EF Core
+
+        public Currency(string code) { }
+
+        public string Code { get; private set; } = null!;
         public static readonly Currency USD = new("USD");
         public static readonly Currency EUR = new("EUR");
         public static readonly Currency UAH = new("UAH");

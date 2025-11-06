@@ -22,16 +22,18 @@ public class TelegramWorkerService : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        if (!string.IsNullOrEmpty(_token))
+        if (string.IsNullOrEmpty(_token))
         {
             _logger.LogWarning("Telegram token missing");
+            return;
+        }
             var bot = new TelegramBotClient(_token!);
             var me = await bot.GetMe(stoppingToken);
 
             _logger.LogInformation($"Telegram bot connected as @{me.Username}");
             bot.StartReceiving(HandleUpdate, HandleError, cancellationToken: stoppingToken);
             await Task.Delay(-1, stoppingToken);
-        }
+        
     }
     private async Task HandleUpdate(ITelegramBotClient bot, Update update, CancellationToken ct)
     {
