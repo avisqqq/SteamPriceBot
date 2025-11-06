@@ -30,7 +30,7 @@ public static class DependencyInjection
 
         // Notification
         var telegramToken = config["Telegram:Token"];
-        var chatId = config["Telegram : ChatId"];
+        var chatId = config["Telegram:ChatId"];
         if (!string.IsNullOrEmpty(telegramToken) && !string.IsNullOrEmpty(chatId))
             services.AddSingleton<INotificationService>(new TelegramNotificationService(telegramToken, chatId));
 
