@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamPriceBot.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamPriceBot.TelegramWorker", "src\SteamPriceBot.TelegramWorker\SteamPriceBot.TelegramWorker.csproj", "{485C94DE-A1D9-438A-8269-EA7E13ECAB9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamPriceBot.Api", "src\SteamPriceBot.Api\SteamPriceBot.Api.csproj", "{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{485C94DE-A1D9-438A-8269-EA7E13ECAB9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{485C94DE-A1D9-438A-8269-EA7E13ECAB9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{485C94DE-A1D9-438A-8269-EA7E13ECAB9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 		{0E504124-B41A-4CDE-B35D-0A2C61A167A2} = {3645A666-AD2C-41A7-920D-1EF84F9244C6}
 		{FE17F290-7DE6-4CB9-B72F-7818A43438CB} = {3645A666-AD2C-41A7-920D-1EF84F9244C6}
 		{485C94DE-A1D9-438A-8269-EA7E13ECAB9D} = {3645A666-AD2C-41A7-920D-1EF84F9244C6}
+		{9F341D65-9CF1-4FE4-A3DD-FB7E62521E62} = {3645A666-AD2C-41A7-920D-1EF84F9244C6}
 	EndGlobalSection
 EndGlobal
