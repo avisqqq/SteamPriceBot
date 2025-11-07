@@ -3,6 +3,7 @@ using SteamPriceBot.Application.Commands.RemoveTrackedItem;
 using SteamPriceBot.Application.Common; 
 using SteamPriceBot.Application.Commands.TrackItem;
 using SteamPriceBot.Application.Queries.GetTrackedItem;
+using SteamPriceBot.Application.Services;
 
 namespace SteamPriceBot.Application;
 
@@ -23,6 +24,8 @@ public static class DependencyInjection
             .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
+
+        services.AddScoped<PriceTrackingService>();
 
         return services;
     }

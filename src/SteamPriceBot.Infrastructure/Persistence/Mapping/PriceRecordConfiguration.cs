@@ -21,6 +21,7 @@ public class PriceRecordConfiguration : IEntityTypeConfiguration<PriceRecord>
             {
                 c.Property(code => code.Code)
                     .HasColumnName("CurrencyCode")
+                    .HasDefaultValue("USD")
                     .IsRequired();
             });
         });
