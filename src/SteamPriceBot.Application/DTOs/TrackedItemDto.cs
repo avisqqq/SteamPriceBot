@@ -1,3 +1,3 @@
 namespace SteamPriceBot.Application.DTOs;
 
-public record TrackedItemDto(Guid Id, string? MarketHashName, decimal? Threshold, string Currency);
+public record TrackedItemDto(Guid Id, string? MarketHashName, decimal? Threshold, string Currency, Guid marketItemId);

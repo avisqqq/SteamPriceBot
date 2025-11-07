@@ -20,6 +20,8 @@ public class GetTrackedItemQueryHandler : IQueryHandler<GetTrackedItemQuery, IEn
         t.Id,
         t.Item!.DisplayName,
         t.Threshold?.Amount,
-        t.Threshold is null ? "N/A" : "USD"));       
+        t.Threshold is null ? "N/A" : "USD",
+        t.Item.Id)
+        );       
     }
 }
