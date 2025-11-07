@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SteamPriceBot.Application.Interfaces;
+using SteamPriceBot.Infrastructure.Hosted;
 using SteamPriceBot.Infrastructure.Notifications;
 using SteamPriceBot.Infrastructure.Persistence;
 using SteamPriceBot.Infrastructure.Persistence.Repositories;
@@ -22,8 +23,10 @@ public static class DependencyInjection
         services.AddScoped<IItemRepository, ItemRepository>();
         services.AddScoped<IPriceHistoryRepository, PriceHistoryRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped<IMarketItemRepository, MarketItemRepository>();
         services.AddHostedService<DatabaseMigrationHostedService>();
         
+        services.AddHostedService<PriceTrackingBackgroundService>();
 
         // Providers
         services.AddHttpClient<IPriceProvider, SteamPriceProviders>();

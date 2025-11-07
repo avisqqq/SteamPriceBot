@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SteamPriceBot.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -33,7 +33,7 @@ namespace SteamPriceBot.Infrastructure.Migrations
                     TrackedItemId = table.Column<Guid>(type: "TEXT", nullable: false),
                     TimestampUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
                     Amount = table.Column<decimal>(type: "TEXT", nullable: false),
-                    CurrencyCode = table.Column<string>(type: "TEXT", nullable: false),
+                    CurrencyCode = table.Column<string>(type: "TEXT", nullable: false, defaultValue: "USD"),
                     MarketItemId = table.Column<Guid>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>

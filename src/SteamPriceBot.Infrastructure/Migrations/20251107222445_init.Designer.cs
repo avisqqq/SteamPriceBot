@@ -11,8 +11,8 @@ using SteamPriceBot.Infrastructure.Persistence;
 namespace SteamPriceBot.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251107113321_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251107222445_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -129,7 +129,9 @@ namespace SteamPriceBot.Infrastructure.Migrations
 
                                     b2.Property<string>("Code")
                                         .IsRequired()
+                                        .ValueGeneratedOnAdd()
                                         .HasColumnType("TEXT")
+                                        .HasDefaultValue("USD")
                                         .HasColumnName("CurrencyCode");
 
                                     b2.HasKey("PriceValuePriceRecordId");
