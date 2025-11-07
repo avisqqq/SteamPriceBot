@@ -18,7 +18,7 @@ public class GetTrackedItemQueryHandler : IQueryHandler<GetTrackedItemQuery, IEn
         var item = await _repo.GetAllAsync(ct);
         return item.Select(t => new TrackedItemDto(
         t.Id,
-        t.Item.DisplayName,
+        t.Item!.DisplayName,
         t.Threshold?.Amount,
         t.Threshold is null ? "N/A" : "USD"));       
     }

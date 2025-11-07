@@ -26,7 +26,7 @@ public class PriceTrackingService
         var all = await _items.GetAllAsync(ct);
         foreach (var tracked in all)
         {
-            var price = await _provider.GetCurrentPriceAsync(tracked.Item.ItemId.MarketHashName,
+            var price = await _provider.GetCurrentPriceAsync(tracked!.Item!.ItemId!.MarketHashName,
             "USD", ct);
 
             if (price is null)

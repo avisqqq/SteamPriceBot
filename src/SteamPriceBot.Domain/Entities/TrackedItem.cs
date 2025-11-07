@@ -31,7 +31,7 @@ namespace SteamPriceBot.Domain.Entities
                 return;
             if (Threshold.IsBreachedBy(current))
             {
-                AddDomainEvent(new PriceThresholdReached(Item, current, Threshold));
+                AddDomainEvent(new PriceThresholdReached(Item!, current, Threshold));
             }
         }
     }
