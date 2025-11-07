@@ -9,7 +9,7 @@ namespace SteamPriceBot.Domain.ValueObjects
     {
         private Currency() { } //EF Core
 
-        public Currency(string code) { }
+        public Currency(string code) { Code = code; } 
 
         public string Code { get; private set; } = null!;
         public static readonly Currency USD = new("USD");

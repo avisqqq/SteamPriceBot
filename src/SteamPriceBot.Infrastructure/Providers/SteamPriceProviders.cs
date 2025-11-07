@@ -38,7 +38,7 @@ public class SteamPriceProviders : IPriceProvider
                 return null;
             var raw = priceElement.GetString()?.Replace("$", "").Replace(",", ".").Trim();
             if (decimal.TryParse(raw, out var amount))
-                return new PriceValue(amount, new Currency(currencyCode));
+                return new PriceValue(amount, Currency.FromCode(currencyCode));
 
             return null;
         }
