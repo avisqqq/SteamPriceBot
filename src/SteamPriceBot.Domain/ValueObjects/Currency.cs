@@ -9,12 +9,12 @@ namespace SteamPriceBot.Domain.ValueObjects
     {
         private Currency() { } //EF Core
 
-        public Currency(string code) { Code = code; } 
+        public Currency(string code) { FromCode(code); } 
 
-        public string Code { get; private set; } = null!;
-        public static readonly Currency USD = new("USD");
-        public static readonly Currency EUR = new("EUR");
-        public static readonly Currency UAH = new("UAH");
+        public string Code { get; private set; } = "USD";
+        public static readonly Currency USD = new() { Code = "USD"};
+        public static readonly Currency EUR = new(){ Code = "EUR"};
+        public static readonly Currency UAH = new(){ Code = "UAH"};
         public static Currency FromCode(string code)
         {
             code = code.ToUpperInvariant();
