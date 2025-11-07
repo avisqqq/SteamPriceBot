@@ -14,11 +14,14 @@ namespace SteamPriceBot.Application.Commands.TrackItem
         private readonly IItemRepository _repo;
         private readonly IPriceProvider _priceProvider;
         private readonly IUnitOfWork _uow;
-        public TrackItemCommandHandler(IItemRepository repo, IPriceProvider priceProvider, IUnitOfWork uow)
+        private readonly IMarketItemRepository _market;
+        public TrackItemCommandHandler(IItemRepository repo, IPriceProvider priceProvider, IUnitOfWork uow,
+        IMarketItemRepository market)
         {
             _repo = repo;
             _priceProvider = priceProvider;
             _uow = uow;
+            _market = market;
         }
 
         public async Task HandleAsync(TrackItemCommand command, CancellationToken ct = default)
@@ -26,7 +29,11 @@ namespace SteamPriceBot.Application.Commands.TrackItem
             var price = await _priceProvider.GetCurrentPriceAsync(command.MarketHashName, command.CurrencyCode, ct)
                 ?? throw new ApplicationException($"Price for {command.MarketHashName} not found");
             var itemId = new ItemId(730, command.MarketHashName);
-            var marketItem = new MarketItem(itemId, command.MarketHashName);
+            var marketItem = await _market.GetMarketItemByHashName(command.MarketHashName, ct);
+            if(marketItem is null)
+            {
+                marketItem = new MarketItem(itemId,command.MarketHashName);
+            }
             AlertThreshold? threshold = command.AlertThreshold is not null
                 ? AlertThreshold.Create(command.AlertThreshold.Value)
                 : null;
