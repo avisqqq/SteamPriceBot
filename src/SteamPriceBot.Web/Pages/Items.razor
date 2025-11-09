@@ -1,0 +1,32 @@
+@page "/items"
+@inject ApiClient Api
+<h3>Tracked Items</h3>
+
+@if (items == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!items.Any())
+{
+    <p>No tracked items yet.</p>
+}
+else
+{
+    <ul>
+        @foreach (var item in items)
+        {
+            <li>@item.MarketHashName - @item.Threshold @item.Currency</li>
+        }
+    </ul>
+}
+
+@code {
+    private IEnumerable<TrackedItemDto>? items;
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await Api.GetTrackedItemAsync();
+    }
+     
+
+}
