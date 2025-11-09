@@ -11,5 +11,5 @@ var apiBase = builder.Configuration["ApiBaseUrl"] ?? "http://localhost:5000";
 
 Console.WriteLine($"ApiBaseUrl: {apiBase}");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiBase) });
-
+builder.Services.AddScoped<ApiClient>();
 await builder.Build().RunAsync();
