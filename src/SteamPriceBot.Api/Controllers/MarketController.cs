@@ -19,7 +19,7 @@ namespace SteamPriceBot.Api.Controllers
         {
             _get = get;
         }
-        [HttpGet("marketHashName")]
+        [HttpGet("{marketHashName}")]
         public async Task<IActionResult> GetPrice(string marketHashName, CancellationToken ct)
         {
             var result = await _get.HandleAsync(new GetMarketPriceQuery(marketHashName, "USD"), ct);
