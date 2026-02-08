@@ -15,6 +15,21 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  
+  api:
+    build:
+      context: .
+      dockerfile: src/SteamPriceBot.Api/Dockerfile
+    container_name: steampricebot-api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=${POSTGRES_DB:-steampricebot};Username=${POSTGRES_USER:-steampricebot};Password=${POSTGRES_PASSWORD:-steampricebot}
+    ports:
+      - "8080:8080"
 
 volumes:
   postgres_data:
