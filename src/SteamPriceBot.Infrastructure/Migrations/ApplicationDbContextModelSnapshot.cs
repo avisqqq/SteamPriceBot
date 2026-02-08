@@ -21,11 +21,11 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -36,16 +36,16 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("MarketItemId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<DateTime>("TimestampUtc")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("TrackedItemId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -58,10 +58,10 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.Property<Guid?>("MarketItemId")
-                        .HasColumnType("TEXT");
+                        .HasColumnType("uuid");
 
                     b.HasKey("Id");
 
@@ -75,15 +75,15 @@ namespace SteamPriceBot.Infrastructure.Migrations
                     b.OwnsOne("SteamPriceBot.Domain.ValueObjects.ItemId", "ItemId", b1 =>
                         {
                             b1.Property<Guid>("MarketItemId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<int>("AppId")
-                                .HasColumnType("INTEGER")
+                                .HasColumnType("integer")
                                 .HasColumnName("AppId");
 
                             b1.Property<string>("MarketHashName")
                                 .IsRequired()
-                                .HasColumnType("TEXT")
+                                .HasColumnType("text")
                                 .HasColumnName("MarketHashName");
 
                             b1.HasKey("MarketItemId");
@@ -106,10 +106,10 @@ namespace SteamPriceBot.Infrastructure.Migrations
                     b.OwnsOne("SteamPriceBot.Domain.ValueObjects.PriceValue", "Price", b1 =>
                         {
                             b1.Property<Guid>("PriceRecordId")
-                                .HasColumnType("TEXT");
+                                .HasColumnType("uuid");
 
                             b1.Property<decimal>("Amount")
-                                .HasColumnType("TEXT")
+                                .HasColumnType("numeric")
                                 .HasColumnName("Amount");
 
                             b1.HasKey("PriceRecordId");
@@ -122,12 +122,12 @@ namespace SteamPriceBot.Infrastructure.Migrations
                             b1.OwnsOne("SteamPriceBot.Domain.ValueObjects.Currency", "Currency", b2 =>
                                 {
                                     b2.Property<Guid>("PriceValuePriceRecordId")
-                                        .HasColumnType("TEXT");
+                                        .HasColumnType("uuid");
 
                                     b2.Property<string>("Code")
                                         .IsRequired()
                                         .ValueGeneratedOnAdd()
-                                        .HasColumnType("TEXT")
+                                        .HasColumnType("text")
                                         .HasDefaultValue("USD")
                                         .HasColumnName("CurrencyCode");
 
@@ -156,11 +156,11 @@ namespace SteamPriceBot.Infrastructure.Migrations
 
                     b.OwnsOne("SteamPriceBot.Domain.ValueObjects.AlertThreshold", "Threshold", b1 =>
                         {
-                            b1.Property<Guid>("TrackedItemId")
-                                .HasColumnType("TEXT");
+                        b1.Property<Guid>("TrackedItemId")
+                            .HasColumnType("uuid");
 
-                            b1.Property<decimal>("Amount")
-                                .HasColumnType("TEXT")
+                        b1.Property<decimal>("Amount")
+                            .HasColumnType("numeric")
                                 .HasColumnName("ThresholdAmount");
 
                             b1.HasKey("TrackedItemId");

@@ -19,6 +19,7 @@ A simple bot to fetch and report Steam game itemes. Designed to be extended for 
 - A recent release of your runtime environment .NET 9 depending on the implementation.
 - Network access to the Steam store web API or Steam store pages.
 - Optional: API keys or tokens for the chat platform you want to connect (e.g., Discord bot token).
+ - Docker Desktop (to run PostgreSQL locally).
 
 
 Note: This repository may contain a specific implementation language. Adjust the commands below to match (npm/yarn for Node, pip/venv for Python).
@@ -29,3 +30,18 @@ Note: This repository may contain a specific implementation language. Adjust the
    cd SteamPriceBot
    dotnet run
 
+## PostgreSQL With Docker (local)
+1. Install Docker Desktop and confirm it runs:
+   `docker --version`
+2. Start PostgreSQL:
+   `docker compose up -d db`
+3. Optional: override defaults by creating a `.env` file (use `.env.example` as a template).
+4. Run the API (from the repo root):
+   `dotnet run --project src/SteamPriceBot.Api/SteamPriceBot.Api.csproj`
+
+The API reads the connection string from `src/SteamPriceBot.Api/appsettings.json`. To override it without editing files, set an environment variable:
+`ConnectionStrings__DefaultConnection="Host=localhost;Port=5432;Database=steampricebot;Username=steampricebot;Password=steampricebot"`
+
+## EF Core Migrations (PostgreSQL)
+This repo applies migrations automatically at startup. If you want to run them manually:
+`dotnet ef database update --project src/SteamPriceBot.Infrastructure/SteamPriceBot.Infrastructure.csproj --startup-project src/SteamPriceBot.Api/SteamPriceBot.Api.csproj`

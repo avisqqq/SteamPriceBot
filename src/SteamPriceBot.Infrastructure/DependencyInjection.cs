@@ -15,9 +15,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
-        // EF Core Sqlite
+        // EF Core PostgreSQL
         services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseSqlite(config.GetConnectionString("DefaultConnection") ?? "Data Source =steampricebot.db"));
+        options.UseNpgsql(config.GetConnectionString("DefaultConnection")));
 
         //Repositories 
         services.AddScoped<IItemRepository, ItemRepository>();

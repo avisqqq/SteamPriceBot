@@ -15,10 +15,10 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 name: "MarketItems",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    AppId = table.Column<int>(type: "INTEGER", nullable: true),
-                    MarketHashName = table.Column<string>(type: "TEXT", nullable: true),
-                    DisplayName = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    AppId = table.Column<int>(type: "integer", nullable: true),
+                    MarketHashName = table.Column<string>(type: "text", nullable: true),
+                    DisplayName = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -29,12 +29,12 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 name: "PriceRecords",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    TrackedItemId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    TimestampUtc = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
-                    CurrencyCode = table.Column<string>(type: "TEXT", nullable: false, defaultValue: "USD"),
-                    MarketItemId = table.Column<Guid>(type: "TEXT", nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    TrackedItemId = table.Column<Guid>(type: "uuid", nullable: false),
+                    TimestampUtc = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Amount = table.Column<decimal>(type: "numeric", nullable: false),
+                    CurrencyCode = table.Column<string>(type: "text", nullable: false, defaultValue: "USD"),
+                    MarketItemId = table.Column<Guid>(type: "uuid", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -50,9 +50,9 @@ namespace SteamPriceBot.Infrastructure.Migrations
                 name: "TrackedItems",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "TEXT", nullable: false),
-                    MarketItemId = table.Column<Guid>(type: "TEXT", nullable: true),
-                    ThresholdAmount = table.Column<decimal>(type: "TEXT", nullable: true)
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    MarketItemId = table.Column<Guid>(type: "uuid", nullable: true),
+                    ThresholdAmount = table.Column<decimal>(type: "numeric", nullable: true)
                 },
                 constraints: table =>
                 {

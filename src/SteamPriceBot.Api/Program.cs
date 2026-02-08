@@ -5,7 +5,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
-
 // For local testing
 builder.Services.AddCors(options =>
 {
